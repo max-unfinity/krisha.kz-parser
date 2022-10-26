@@ -1,7 +1,7 @@
 ## krisha.kz Scrapy parser
 Parses prices on real estate at https://krisha.kz for further analysing.
 
-Some results I've got after anasysing appartments for a rent in Astana and Almaty:
+Some results I've got after analysing appartments for a rent in Astana and Almaty:
 Long-term:
 ![output/astana_vs_almaty_longterm.jpg](./output/astana_vs_almaty_longterm.jpg)
 Short-term:
