@@ -43,7 +43,8 @@ change this delay.
 
 ---
 ## My analysis for Astana and Almaty
-*(from rent_
+*(from [rent_price_analysis.ipynb](rent_price_analysis.ipynb))*
+
 Some results I've got after analysing appartments for a rent in Astana and
 Almaty:
 <p>
