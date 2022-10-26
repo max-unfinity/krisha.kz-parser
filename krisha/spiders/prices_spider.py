@@ -1,20 +1,8 @@
 import scrapy
-import json
-import pickle
 
 
-def pickle_save(x, file):
-    with open(file, 'wb') as f:
-        pickle.dump(x, f)
-
-def pickle_load(file):
-    with open(file, 'rb') as f:
-        return pickle.load(f)
-
-
-class MySpider(scrapy.Spider):
-    name = 'my_spider'
-    n_pages = 187
+class PricesSpider(scrapy.Spider):
+    name = 'prices_spider'
     
     visited_ids = []
     all_prices = []
@@ -25,12 +13,16 @@ class MySpider(scrapy.Spider):
         'LOG_ENABLED': False,
     }
     
+    def __init__(self, base_url, n_pages, **kwargs):
+        self.base_url = base_url
+        self.n_pages = int(n_pages)
+        super().__init__(**kwargs)
+    
     def start_requests(self):
-        base_url =  'https://krisha.kz/arenda/kvartiry/astana/?das[live.rooms]=1&das[rent.period]=1'
+        urls = [self.base_url+f'&page={i}' for i in range(1,self.n_pages+1)]
         
-        urls = [base_url+f'&page={i}' for i in range(1,self.n_pages+1)]
         for url in urls:
-            print(url)
+            # print(url)
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
@@ -58,8 +50,10 @@ class MySpider(scrapy.Spider):
         assert len(ids) == len(prices)
         for idx, p in zip(ids, prices):
             yield {'id':idx, 'price':p}
-            
-        print(url, len(ids))
+        
+        t = response.url.split("page=")
+        page = t[1] if len(t)>1 else 1
+        print(f'parsed n={len(ids)} from page={page}')
         
     def closed(self, reason):
         print(reason)
