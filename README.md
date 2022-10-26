@@ -1,27 +1,13 @@
-krisha.kz Scrapy parser
+# krisha.kz Scrapy parser
 -----------------------
 
-Parses prices on real estate at https://krisha.kz for further analysing.
-
-Some results I've got after analysing appartments for a rent in Astana and
-Almaty:
-
-Long-term:
-
-![output/astana_vs_almaty_longterm.jpg](./output/astana_vs_almaty_longterm.jpg)
-
-Short-term:
-
-![output/astana_vs_almaty_shortterm.jpg](./output/astana_vs_almaty_shortterm.jpg)
-
-To start parse you need scrapy installed:
-
-`pip install scrapy`
-
- 
+This script parses prices on real estate at https://krisha.kz for further analysing.
 
 Running script
 --------------
+To start parsing you need scrapy installed:
+
+`pip install scrapy`
 
 1.  Go to https://krisha.kz and set parameters you need:
 
@@ -52,7 +38,20 @@ By default script handles 1 page per 3 sec. Delay is made to don’t get muted o
 banned by krisha.kz. You can change this parameter in `krisha/settings.py` by
 setting `DOWNLOAD_DELAY`.
 
- 
-
-**Caution: **if you are parsing many pages at once (10+), you better don’t
+**Caution:** if you are parsing many pages at once (10+), you better don’t
 change this delay.
+
+---
+## My analysis for Astana and Almaty
+*(from rent_
+Some results I've got after analysing appartments for a rent in Astana and
+Almaty:
+<p>
+Long-term rent:
+</br>
+<img src="output/astana_vs_almaty_longterm.jpg" width="500"\>
+</br>
+Short-term rent:
+</br>
+<img src="output/astana_vs_almaty_shortterm.jpg" width="500"\>
+</p>
